@@ -9,8 +9,7 @@ function CartWidget() {
     return (
         <>
        <span className="carrito">
-        <i className="bi bi-cart icon"></i>
-         CARRITO  
+        <i className="bi bi-cart icon"></i> 
          {itemCount}
          </span>
          
