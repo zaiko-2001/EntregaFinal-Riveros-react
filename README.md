@@ -37,4 +37,4 @@ Esta es una aplicación de e-commerce simple construida utilizando **REACT**. La
 1. Clona el repositorio:
 
    ```bash
-   git clone https://github.com/tuusuario/ecommerce-react-app.git
+   git clone https://github.com/tuusuario/PreEntrega2-Riveros-react.git
