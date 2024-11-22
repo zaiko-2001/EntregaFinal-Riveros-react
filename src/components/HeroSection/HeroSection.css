@@ -6,7 +6,6 @@
       url("/background-hero.jpeg"); 
     background-size: cover;
     background-position: center;
-    font-family: sans-serif;
     height: 580px;
     display: flex;
     align-items: center;
@@ -33,11 +32,11 @@
     color: white;
     background-color: rgba(99, 26, 134, 0.9);
     padding: 30px;
-    border-radius: 16px;
+    border-radius: 4px;
   }
   
   .hero-ancla:hover {
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.9);
     color: rgb(99, 26, 134);
     transition: 0.3s ease-in-out;
   }

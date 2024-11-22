@@ -1,11 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import HeroSection from "./HeroSection";
+import HeroSection from "../HeroSection/HeroSection";
+import "./ItemListContainer.css"
 
 const ItemListContainer = () => {
   const { categoryId } = useParams(); // Extrae el parámetro de la categoría
   const [productos, setProductos] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  // Define los títulos según las rutas
+  const getTitle = () => {
+    switch (location.pathname) {
+      case "/":
+        return "Nuestros Productos";
+      case "/category/tazas":
+        return "Tazas";
+      case "/category/platos":
+        return "Platos";
+    }
+  };
   
   const fetchProductos = async () => {
     setLoading(true);
@@ -36,7 +49,7 @@ const ItemListContainer = () => {
   return (
     <div>
       {location.pathname === '/' && <HeroSection />} 
-      <h1 className="d-flex align-items-center justify-content-center">Nuestros Productos</h1>
+      <h1 className="d-flex align-items-center justify-content-center">{getTitle()}</h1>
       {loading ? (
         <p className="d-flex align-items-center justify-content-center">Cargando productos...</p>
       ) : productos.length > 0 ? (
@@ -55,12 +68,12 @@ const ItemListContainer = () => {
                   <p className="card-text">Precio: ${producto.precio}</p>
 
                   {/* Botón de "Ver más" que redirige a la página de detalle del producto */}
-                  <Link to={`/item/${producto.id}`} className="btn btn-primary me-1">
+                  <Link to={`/item/${producto.id}`} className="btn btn-vermas me-1">
                     Ver más
                   </Link>
 
                   {/* Botón de "Agregar al carrito" */}
-                  <button className="btn btn-success">
+                  <button className="btn btn-carrito">
                     Agregar al carrito
                   </button>
                 </div>
