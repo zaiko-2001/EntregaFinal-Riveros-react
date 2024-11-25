@@ -1,0 +1,29 @@
+.botones {
+margin-top: 50px;
+}
+.btn-volver {
+    font-size: 16px !important;
+      color: white !important;
+      background-color: rgb(46, 26, 134) !important;
+      padding: 10px !important;
+      border-radius: 2px !important;
+  }
+  .btn-volver:hover {
+    background-color: white !important;
+      color: rgb(46, 26, 134) !important;
+      transition: 0.3s ease-in-out !important;
+      border-color: rgb(46, 26, 134) !important;
+  }
+@media (max-width: 768px) {
+    .botones {
+        margin-top: 0px;
+    }
+        .card-img-top {
+          height: auto !important; 
+          max-width: 100% !important; 
+          object-fit: contain !important; 
+          border-radius: 4px !important; 
+        }
+       
+      
+}

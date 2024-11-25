@@ -6,5 +6,8 @@
     font-style: normal;
     letter-spacing: 1px;
 }
-
+.card {
+    border-color: transparent !important;
+  }
+  
 
