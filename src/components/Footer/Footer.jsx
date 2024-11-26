@@ -5,7 +5,7 @@ const Footer = () => {
     <footer
       id="footer"
       className="text-center text-white"
-      style={{ backgroundColor: 'rgb(99, 26, 134)', padding: '10px 0', marginTop: "50px" }}
+      style={{ backgroundColor: '#000000', padding: '10px 0', marginTop: "50px" }}
     >
       <div className="container">
         <div className="row">

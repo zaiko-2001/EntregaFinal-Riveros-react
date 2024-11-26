@@ -1,12 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import CartWidget from "./CartWidget/CartWidget";
+import SearchBar from "./SearchBar/SearchBar";
 
 function NavBar() {
   return (
     <nav
       className="navbar navbar-expand-lg navbar-dark sticky-top"
-      style={{ backgroundColor: "#631A86" }}
+      style={{ backgroundColor: "#000000" }}
     >
       <div className="container px-4">
         <Link className="navbar-brand" to="/">
@@ -37,6 +38,7 @@ function NavBar() {
             className="navbar-nav ms-auto mb-2 mb-lg-0"
             style={{ fontWeight: 500 }}
           >
+      
             <li className="nav-item">
               <Link className="nav-link" to="/">
                 INICIO
@@ -54,8 +56,11 @@ function NavBar() {
             </li>
             <li className="nav-item">
               <a className="nav-link">
-                CONTACTO
+                ACERCA DE
               </a>
+            </li>
+            <li className="nav-item d-flex align-items-center mx-lg-2">
+              <SearchBar />
             </li>
             <li className="nav-item">
               <button className="btn nav-link" id="toggleCarrito">

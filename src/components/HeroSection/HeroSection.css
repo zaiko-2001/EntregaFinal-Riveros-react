@@ -30,14 +30,14 @@
     text-decoration: none;
     font-size: 22px;
     color: white;
-    background-color: rgba(99, 26, 134, 0.9);
+    background-color: rgba(0, 0, 0, 0.9);
     padding: 30px;
     border-radius: 4px;
   }
   
   .hero-ancla:hover {
     background-color: rgba(255, 255, 255, 0.9);
-    color: rgb(99, 26, 134);
+    color: rgb(0, 0, 0);
     transition: 0.3s ease-in-out;
   }
   
