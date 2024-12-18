@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "../../context/CartContext";
-import ItemQuantitySelector from "./ItemQuantitySelector";
+import ItemQuantitySelector from "./itemQuantitySelector.jsx";
 import Description from "./Description";
 import AddItemButton from "./AddItemButton";
 
