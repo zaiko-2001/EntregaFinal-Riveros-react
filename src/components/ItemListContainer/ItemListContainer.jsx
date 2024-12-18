@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { collection, getDocs } from "firebase/firestore"; 
+import db from "../../firebase.js"; // Asegúrate de que la ruta sea correcta
 import HeroSection from "../HeroSection/HeroSection";
 import ItemList from "./ItemList/ItemList";
-import "./ItemListContainer.css"
+import "./ItemListContainer.css";
 
 const ItemListContainer = () => {
   const { categoryId } = useParams();
@@ -25,15 +27,16 @@ const ItemListContainer = () => {
   const fetchProductos = async () => {
     setLoading(true);
     try {
-      const response = await fetch("/products.json");
-      if (!response.ok) {
-        throw new Error("Error al cargar los productos");
-      }
-      const data = await response.json();
+      const querySnapshot = await getDocs(collection(db, "products"));
+      const productosArray = querySnapshot.docs.map((doc) => doc.data());
 
+      console.log('categoryId:', categoryId); // Verifica el parámetro
+      console.log('productosArray:', productosArray); // Verifica los productos
+
+      // Filtrar productos según la categoría
       const productosFiltrados = categoryId
-        ? data.filter((producto) => producto.categoria === categoryId)
-        : data;
+        ? productosArray.filter((producto) => producto.categoria === categoryId)
+        : productosArray;
 
       setProductos(productosFiltrados);
     } catch (error) {
@@ -54,7 +57,7 @@ const ItemListContainer = () => {
       {loading ? (
         <p className="d-flex align-items-center justify-content-center">Cargando productos...</p>
       ) : productos.length > 0 ? (
-        <ItemList productos={productos} /> // Renderiza el nuevo componente
+        <ItemList productos={productos} />
       ) : (
         <p className="d-flex align-items-center justify-content-center">
           No hay productos disponibles en esta categoría.

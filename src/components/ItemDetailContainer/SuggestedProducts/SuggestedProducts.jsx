@@ -1,27 +1,30 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { collection, getDocs } from "firebase/firestore"; // Importamos funciones de Firestore
+import db from "../../../firebase"; // Importa tu configuración de Firebase
 
 const SuggestedProducts = ({ currentProductId, currentProductCategory }) => {
-  const [productos, setProductos] = useState([]);
+  const [productos, setProductos] = useState([]); // Estado para almacenar los productos
   const [loading, setLoading] = useState(true);
 
+  // Función para cargar productos desde Firebase
   const fetchProductos = async () => {
     setLoading(true);
     try {
-      const response = await fetch("/products.json"); 
-      if (!response.ok) {
-        throw new Error("Error al cargar los productos");
-      }
-      const data = await response.json();
+      const querySnapshot = await getDocs(collection(db, "products")); // Obtenemos todos los productos desde Firestore
+      const productosArray = querySnapshot.docs.map((doc) => ({
+        id: doc.id, // Incluye el id del documento
+        ...doc.data(), // Incluye los demás campos del documento
+      }));
 
       // Filtrar productos diferentes al actual y con la misma categoría
-      const productosFiltrados = data.filter(
+      const productosFiltrados = productosArray.filter(
         (producto) =>
-          producto.id !== parseInt(currentProductId) &&
-          producto.categoria === currentProductCategory
+          producto.id !== currentProductId && // Excluir el producto actual
+          producto.categoria === currentProductCategory // Coincidir la categoría
       );
 
-      setProductos(productosFiltrados.slice(0, 4)); 
+      setProductos(productosFiltrados.slice(0, 4)); // Limitar a 4 productos
     } catch (error) {
       console.error("Error al cargar los productos sugeridos:", error);
     } finally {
@@ -44,13 +47,10 @@ const SuggestedProducts = ({ currentProductId, currentProductCategory }) => {
         <div className="row">
           {productos.length > 0 ? (
             productos.map((producto) => (
-              <div
-                key={producto.id}
-                className="col-6 col-md-3 mb-4"
-              >
+              <div key={producto.id} className="col-6 col-md-3 mb-4">
                 <div className="card h-100">
                   <img
-                    src={`/assets/${producto.imagen}`}
+                    src={`/assets/${producto.imagen}`} // Asegúrate de que la ruta de la imagen sea correcta
                     alt={producto.nombre}
                     className="card-img-top"
                     style={{ height: "220px", objectFit: "cover" }}
