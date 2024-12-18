@@ -24,20 +24,20 @@ const Checkout = () => {
         ) : (
           cart.items.map((item) => (
             <div key={item.id} className="row mb-3 align-items-center">
-              <div className="col-4">
+              <div className="col-2">
                 <img
                   src={`/assets/${item.imagen}`}
                   alt={item.nombre}
                   className="img-fluid"
                   style={{
-                    maxHeight: "150px",
+                    maxHeight: "200px",
                     maxWidth: "auto",
                     objectFit: "cover",
                     borderRadius: "4px",
                   }}
                 />
               </div>
-              <div className="col-8">
+              <div className="col-10">
                 <h4>{item.nombre}</h4>
                 <p>Cantidad: {item.quantity}</p>
                 <p>Precio: <strong>${item.precio}</strong></p>
